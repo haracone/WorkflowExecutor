@@ -48,4 +48,15 @@ class WorkflowFileReader {
         }
         return buff.toString();
     }
+
+    String ReadList() throws IOException {
+        int letter = 0;
+        char c;
+
+        letter = reader.read();
+        while (!Character.isDigit(letter) && letter != -1)
+            letter = reader.read();
+        c = (char) letter;
+        return Character.toString(c);
+    }
 }

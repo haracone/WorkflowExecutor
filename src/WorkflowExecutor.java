@@ -29,20 +29,21 @@ class WorkflowExecutor {
     }
 
     void Execute() throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        String number = "";
+        String number = "0";
         Blockable block;
         String str;
         String text = null;
         String[] substr;
-        ArrayList <String> arrayList = new ArrayList<>();
         BlockFactory blockFactory = new BlockFactory();
 
-        while (!number.equals("\n")) {
-            number = workflowFileReader.ReadBlockId();
-            str = workflowMap.get(number);
-            substr = str.split("\\s");
-            block = blockFactory.CreateBlock(substr[0]);
-            text = block.run(substr, text);
+        while (!number.equals("\n") && Character.isDigit(number.charAt(0))) {
+            number = workflowFileReader.ReadList();
+            if (Character.isDigit(number.charAt(0))) {
+                str = workflowMap.get(number);
+                substr = str.split("\\s");
+                block = blockFactory.CreateBlock(substr[0]);
+                text = block.run(substr, text);
+            }
         }
     }
 }
