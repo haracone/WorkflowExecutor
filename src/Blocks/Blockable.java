@@ -1,5 +1,7 @@
+package Blocks;
+
 import java.io.IOException;
 
-interface Blockable {
+public interface Blockable {
     String run(String[] args, String text) throws IOException;
 }

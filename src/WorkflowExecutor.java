@@ -1,8 +1,9 @@
+import Blocks.BlockFactory;
+import Blocks.Blockable;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,12 +11,12 @@ class WorkflowExecutor {
     private Map <String, String> workflowMap = new HashMap<String, String>();
     private WorkflowFileReader workflowFileReader = null;
 
-    WorkflowExecutor(File workflow) throws FileNotFoundException {
+    WorkflowExecutor(File workflow) throws IOException {
         workflowFileReader = new WorkflowFileReader(workflow);
     }
 
-    void FillingMap() throws IOException {
-        String key = "", value = "", str = "";
+    private void FillingMap() throws IOException {
+        String key = "", value = "";
 
         workflowFileReader.FindDesc();
 
@@ -36,13 +37,15 @@ class WorkflowExecutor {
         String[] substr;
         BlockFactory blockFactory = new BlockFactory();
 
-        while (!number.equals("\n") && Character.isDigit(number.charAt(0))) {
+        FillingMap();
+
+        while (!number.equals("\n") && !number.equals("") && Character.isDigit(number.charAt(0))) {
             number = workflowFileReader.ReadList();
-            if (Character.isDigit(number.charAt(0))) {
-                str = workflowMap.get(number);
-                substr = str.split("\\s");
-                block = blockFactory.CreateBlock(substr[0]);
-                text = block.run(substr, text);
+                if (!number.equals("") && Character.isDigit(number.charAt(0))) {
+                    str = workflowMap.get(number);
+                    substr = str.split("\\s");
+                    block = blockFactory.CreateBlock(substr[0]);
+                    text = block.run(substr, text);
             }
         }
     }

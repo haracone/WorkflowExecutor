@@ -1,3 +1,7 @@
+package Blocks;
+
+import Blocks.Blockable;
+
 import java.io.*;
 
 public class BlockReadFile implements Blockable {
@@ -8,8 +12,7 @@ public class BlockReadFile implements Blockable {
         StringBuilder stringBuilder = new StringBuilder();
 
         while ((line = bufferedReader.readLine()) != null)
-            stringBuilder.append(line);
-
+            stringBuilder.append(line).append('\n');
         return stringBuilder.toString();
     }
 }

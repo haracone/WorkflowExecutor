@@ -51,12 +51,16 @@ class WorkflowFileReader {
 
     String ReadList() throws IOException {
         int letter = 0;
-        char c;
+        StringBuilder number = new StringBuilder();
 
         letter = reader.read();
         while (!Character.isDigit(letter) && letter != -1)
             letter = reader.read();
-        c = (char) letter;
-        return Character.toString(c);
+        while (Character.isDigit(letter)) {
+            number.append((char)letter);
+            letter = reader.read();
+        }
+
+        return number.toString();
     }
 }

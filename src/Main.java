@@ -5,8 +5,9 @@ import java.lang.reflect.InvocationTargetException;
 public class Main {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        WorkflowExecutor workflowExecutor = new WorkflowExecutor(new File(args[2]));
-        workflowExecutor.FillingMap();
+        WorkflowExecutor workflowExecutor = new WorkflowExecutor(new File(args[0]));
+        File workflow = new File(args[0]);
+
         workflowExecutor.Execute();
     }
 }

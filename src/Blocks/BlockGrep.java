@@ -1,3 +1,7 @@
+package Blocks;
+
+import Blocks.Blockable;
+
 import java.io.IOException;
 
 public class BlockGrep implements Blockable {
