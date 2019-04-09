@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 class WorkflowExecutor {
-    private Map <String, String> workflowMap = new HashMap<String, String>();
-    private WorkflowFileReader workflowFileReader = null;
+    private Map <String, String> workflowMap = new HashMap<>();
+    private WorkflowFileReader workflowFileReader;
 
     WorkflowExecutor(File workflow) throws IOException {
         workflowFileReader = new WorkflowFileReader(workflow);

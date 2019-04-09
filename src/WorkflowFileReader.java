@@ -1,11 +1,9 @@
 import java.io.*;
 
 class WorkflowFileReader {
-    private File workflow;
-    private InputStreamReader reader = null;
+    private InputStreamReader reader;
 
     WorkflowFileReader (File workflow) throws FileNotFoundException {
-        this.workflow = workflow;
         reader = new InputStreamReader(new FileInputStream(workflow));
     }
 
@@ -50,7 +48,7 @@ class WorkflowFileReader {
     }
 
     String ReadList() throws IOException {
-        int letter = 0;
+        int letter;
         StringBuilder number = new StringBuilder();
 
         letter = reader.read();

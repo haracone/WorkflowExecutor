@@ -1,7 +1,5 @@
 package Blocks;
 
-import Blocks.Blockable;
-
 import java.io.IOException;
 
 public class BlockReplace implements Blockable {

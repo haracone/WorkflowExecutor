@@ -1,12 +1,9 @@
 package Blocks;
 
-import Blocks.Blockable;
-
-import java.io.IOException;
 import java.util.Arrays;
 
 public class BlockSort implements Blockable {
-    public String run(String[] args, String text) throws IOException {
+    public String run(String[] args, String text) {
         String[] splitedText = text.split("\n");
         StringBuilder stringBuilder = new StringBuilder();
 
