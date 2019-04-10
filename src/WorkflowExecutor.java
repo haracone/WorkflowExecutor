@@ -9,7 +9,7 @@ import java.util.Map;
 
 class WorkflowExecutor {
     private Map <String, String> workflowMap = new HashMap<>();
-    private WorkflowFileReader workflowFileReader;
+    private WorkflowFileReader workflowFileReader = null;
 
     WorkflowExecutor(File workflow) throws IOException {
         workflowFileReader = new WorkflowFileReader(workflow);
