@@ -13,6 +13,10 @@ public class BlockReadFile implements Blockable {
 
         while ((line = bufferedReader.readLine()) != null)
             stringBuilder.append(line).append('\n');
+
+        if (stringBuilder.length() > 1)
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
         return stringBuilder.toString();
     }
 }

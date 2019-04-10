@@ -11,6 +11,8 @@ public class BlockSort implements Blockable {
         for (String str: splitedText)
             stringBuilder.append(str).append("\n");
 
+        if (stringBuilder.length() > 1)
+            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         return stringBuilder.toString();
     }
 }

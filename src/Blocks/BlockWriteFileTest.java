@@ -13,8 +13,8 @@ public class BlockWriteFileTest {
     @Test
     public void run() throws IOException {
         BlockWriteFile blockWriteFile = new BlockWriteFile();
-        String actual = blockWriteFile.run(new String[]{"Blocks\\out_file.txt"}, "entry");
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("Blocks\\out_file.txt"));
+        String actual = blockWriteFile.run(new String[]{null,"out_test.txt"}, "entry");
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("out_test.txt"));
         String expected = bufferedReader.readLine();
         assertEquals(expected, "entry");
     }

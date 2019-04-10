@@ -11,7 +11,7 @@ public class BlockReadFileTest {
     @Test
     public void run() throws IOException {
         BlockReadFile blockReadFile = new BlockReadFile();
-        String actual = blockReadFile.run(new String[]{"Blocks\\testForRead.txt"}, null);
+        String actual = blockReadFile.run(new String[]{null, "in_test.txt"}, null);
         String expected = "test";
         assertEquals(actual, expected);
     }
