@@ -1,18 +1,31 @@
 package Blocks;
 
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class BlockSort implements Blockable {
+    private static final Logger logger = Logger.getLogger(BlockSort.class.getName());
+
     public String run(String[] args, String text) {
-        String[] splitedText = text.split("\n");
-        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            if (text == null)
+                throw new Exception("Missing text");
 
-        Arrays.sort(splitedText);
-        for (String str: splitedText)
-            stringBuilder.append(str).append("\n");
+            String[] splitedText = text.split("\n");
+            StringBuilder stringBuilder = new StringBuilder();
 
-        if (stringBuilder.length() > 1)
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        return stringBuilder.toString();
+            Arrays.sort(splitedText);
+            for (String str : splitedText)
+                stringBuilder.append(str).append("\n");
+
+            if (stringBuilder.length() > 1)
+                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+
+            return stringBuilder.toString();
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, "ERROR:", e);
+        }
+        return null;
     }
 }

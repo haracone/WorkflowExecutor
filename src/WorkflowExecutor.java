@@ -3,7 +3,6 @@ import Blocks.Blockable;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +28,7 @@ class WorkflowExecutor {
         }
     }
 
-    void Execute() throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    void Execute() throws IOException {
         String number = "0";
         Blockable block;
         String str;

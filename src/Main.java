@@ -1,14 +1,23 @@
-import Blocks.BlockSort;
-
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.util.logging.LogManager;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
-        WorkflowExecutor workflowExecutor = new WorkflowExecutor(new File(args[0]));
+    public static void main(String[] args) {
+        WorkflowExecutor workflowExecutor = null;
 
-        workflowExecutor.Execute();
+        try {
+            LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/log.properties"));
+        } catch (IOException e) {
+            System.err.println("Could not setup logger configuration: " + e.toString());
+        }
+
+        try {
+            workflowExecutor = new WorkflowExecutor(new File(args[0]));
+            workflowExecutor.Execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
